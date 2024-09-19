@@ -1,255 +1,303 @@
 * {
-    box-sizing: border-box;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
-    margin: 0;
-    padding: 20px;
-    font-size: 16px;
-    color: #000000;
-}
-.container {
-    max-width: 800px;
-    margin: auto;
-    padding: 0 15px;
-    position: relative;
-}
-h1, h2 {
-    color: #004080;
-}
-input[type="text"], select {
-    padding: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: calc(50% - 5px);
-    max-width: 300px;
-}
-button {
-    background-color: #004080;
-    color: #fff;
-    padding: 12px 20px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-button:hover {
-    background-color: #0059b3;
-}
-#playerList, .team {
-    list-style-type: none;
-    padding: 0;
-}
-#playerList li, .team li {
-    background-color: #e6f2ff;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 16px;
-}
-.team li {
-    color: #fff;
-}
-.team-container:nth-child(odd) .team li {
-    background-color: #008000;
-}
-.team-container:nth-child(even) .team li {
-    background-color: #b22222;
-}
-.section {
-    background-color: #ffffff;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
-}
-.team-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.team-container {
-    width: calc(50% - 10px);
-    margin-bottom: 20px;
-}
-.remove-button, .edit-button {
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 20px;
-}
-.remove-button {
-    color: #b22222;
-    margin-left: 10px;
-}
-.edit-button {
-    color: #004080;
-    margin-left: 10px;
-}
-.remove-button:hover {
-    color: #d63447;
-}
-.edit-button:hover {
-    color: #0059b3;
-}
-@media screen and (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-    .container {
-        padding: 0 10px;
-    }
-    input[type="text"], select {
-        width: 100%;
-        max-width: none;
-        margin-right: 0;
-    }
-    button {
-        width: 100%;
-        margin-right: 0;
-    }
-    .team-container {
-        width: 100%;
-    }
-}
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            font-size: 16px;
+            color: #000000;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 0 15px;
+            position: relative;
+        }
+        h1, h2 {
+            color: #004080;
+        }
+        input[type="text"], select {
+            padding: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(50% - 5px);
+            max-width: 300px;
+        }
+        button {
+            background-color: #004080;
+            color: #fff;
+            padding: 12px 20px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0059b3;
+        }
+        #playerList, .team {
+            list-style-type: none;
+            padding: 0;
+        }
+        #playerList li, .team li {
+            background-color: #e6f2ff;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+        }
+        .team li {
+            color: #fff;
+        }
+        .team-container:nth-child(odd) .team li {
+            background-color: #008000;
+        }
+        .team-container:nth-child(even) .team li {
+            background-color: #b22222;
+        }
+        .section {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .team-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .team-container {
+            width: calc(50% - 10px);
+            margin-bottom: 20px;
+        }
+        .remove-button, .edit-button {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .remove-button {
+            color: #b22222;
+            margin-left: 10px;
+        }
+        .edit-button {
+            color: #004080;
+            margin-left: 10px;
+        }
+        .remove-button:hover {
+            color: #d63447;
+        }
+        .edit-button:hover {
+            color: #0059b3;
+        }
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 0 10px;
+            }
+            input[type="text"], select {
+                width: 100%;
+                max-width: none;
+                margin-right: 0;
+            }
+            button {
+                width: 100%;
+                margin-right: 0;
+            }
+            .team-container {
+                width: 100%;
+            }
+        }
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        body.dark-mode h1, body.dark-mode h2 {
+            color: #bb86fc;
+        }
+        body.dark-mode .container {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        body.dark-mode input[type="text"], body.dark-mode select {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            border: 1px solid #444444;
+        }
+        body.dark-mode button {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        body.dark-mode button:hover {
+            background-color: #444444;
+        }
+        body.dark-mode #playerList li, body.dark-mode .team li {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+        body.dark-mode .team-container:nth-child(odd) .team li {
+            background-color: #006400;
+        }
+        body.dark-mode .team-container:nth-child(even) .team li {
+            background-color: #8b0000;
+        }
+        body.dark-mode .section {
+            background-color: #1e1e1e;
+        }
+        body.dark-mode .remove-button {
+            color: #ff6666;
+        }
+        body.dark-mode .remove-button:hover {
+            color: #ff3333;
+        }
+        body.dark-mode .edit-button {
+            color: #bb86fc;
+        }
+        body.dark-mode .edit-button:hover {
+            color: #d6b8ff;
+        }
+        /* Dark Mode Toggle Styles */
+        .dark-mode-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 30px;
+            background-color: #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+            transition: background-color 0.3s;
+        }
+        .dark-mode-toggle .toggle-switch {
+            width: 26px;
+            height: 26px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+        .dark-mode-toggle .icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+        }
+        .dark-mode-toggle .moon-icon {
+            left: 8px;
+        }
+        .dark-mode-toggle .sun-icon {
+            right: 8px;
+        }
+        body.dark-mode .dark-mode-toggle {
+            background-color: #555;
+        }
+        body.dark-mode .dark-mode-toggle .toggle-switch {
+            transform: translateX(30px);
+        }
+        /* Added CSS for instructions */
+        .instructions {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+        body.dark-mode .instructions {
+            background-color: #1e1e1e;
+        }
+        .instructions h2 {
+            margin-top: 0;
+        }
+        /* Added CSS for button container */
+        .button-container {
+            display: flex;
+            align-items: center;
+        }
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        body.dark-mode footer {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+        footer a {
+            color: #004080;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        body.dark-mode footer a {
+            color: #bb86fc;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
 
-/* Dark mode styles */
-body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
-}
-body.dark-mode h1, body.dark-mode h2 {
-    color: #bb86fc;
-}
-body.dark-mode .container {
-    background-color: #121212;
-    color: #ffffff;
-}
-body.dark-mode input[type="text"], body.dark-mode select {
-    background-color: #1e1e1e;
-    color: #ffffff;
-    border: 1px solid #444444;
-}
-body.dark-mode button {
-    background-color: #333333;
-    color: #ffffff;
-}
-body.dark-mode button:hover {
-    background-color: #444444;
-}
-body.dark-mode #playerList li, body.dark-mode .team li {
-    background-color: #1e1e1e;
-    color: #ffffff;
-}
-body.dark-mode .team-container:nth-child(odd) .team li {
-    background-color: #006400;
-}
-body.dark-mode .team-container:nth-child(even) .team li {
-    background-color: #8b0000;
-}
-body.dark-mode .section {
-    background-color: #1e1e1e;
-}
-body.dark-mode .remove-button {
-    color: #ff6666;
-}
-body.dark-mode .remove-button:hover {
-    color: #ff3333;
-}
-body.dark-mode .edit-button {
-    color: #bb86fc;
-}
-body.dark-mode .edit-button:hover {
-    color: #d6b8ff;
-}
-/* Dark Mode Toggle Styles */
-.dark-mode-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 60px;
-    height: 30px;
-    background-color: #ddd;
-    border-radius: 15px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 0 5px;
-    transition: background-color 0.3s;
-}
-.dark-mode-toggle .toggle-switch {
-    width: 26px;
-    height: 26px;
-    background-color: white;
-    border-radius: 50%;
-    transition: transform 0.3s;
-}
-.dark-mode-toggle .icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-}
-.dark-mode-toggle .moon-icon {
-    left: 8px;
-}
-.dark-mode-toggle .sun-icon {
-    right: 8px;
-}
-body.dark-mode .dark-mode-toggle {
-    background-color: #555;
-}
-body.dark-mode .dark-mode-toggle .toggle-switch {
-    transform: translateX(30px);
-}
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            position: relative;
+        }
 
-/* Added CSS for instructions */
-.instructions {
-    margin-top: 40px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    line-height: 1.6;
-}
-body.dark-mode .instructions {
-    background-color: #1e1e1e;
-}
-.instructions h2 {
-    margin-top: 0;
-}
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-/* Added CSS for button container */
-.button-container {
-    display: flex;
-    align-items: center;
-}
+        .close-button:hover,
+        .close-button:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
-/* Footer Styles */
-footer {
-    text-align: center;
-    margin-top: 40px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    font-size: 14px;
-}
-body.dark-mode footer {
-    background-color: #1e1e1e;
-    color: #ffffff;
-}
-footer a {
-    color: #004080;
-    text-decoration: none;
-}
-footer a:hover {
-    text-decoration: underline;
-}
-body.dark-mode footer a {
-    color: #bb86fc;
-}
+        body.dark-mode .modal-content {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+
+        body.dark-mode .close-button {
+            color: #ffffff;
+        }
+
+        /* Dark Mode Image Swap for Buy Me A Coffee Button */
+        body.dark-mode #bmc-button {
+            content: url('https://cdn.buymeacoffee.com/buttons/v2/default-black.png');
+        }
