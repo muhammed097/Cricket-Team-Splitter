@@ -13,7 +13,6 @@
 <div class="container">
     <h1>Cricket Team Splitter</h1>
 
-
     <div class="dark-mode-toggle" id="darkModeToggle">
         <span class="icon moon-icon">&#9789;</span>
         <div class="toggle-switch"></div>
@@ -37,6 +36,7 @@
         <h2>Player List</h2>
         <ul id="playerList"></ul>
         <button onclick="addTeam()">Add Team</button>
+        <button onclick="shuffleTeams()">Shuffle Teams</button>
         <button onclick="resetTeams()" style="background-color: #b22222;">Reset</button>
     </div>
 
@@ -53,10 +53,12 @@
         <p>Welcome to the Cricket Team Splitter application! Follow these steps to create balanced cricket teams:</p>
         <ol>
             <li><strong>Add Players:</strong> Enter the player's name in the text field and select their role from the dropdown menu. Available roles are Batter, Bowler, All-Rounder, and Wicket Keeper. Click the "Add Player" button to add them to the player list.</li>
-            <li><strong>Edit Players:</strong> In the player list, you can edit a player's name by clicking the pencil icon (🖉) next to their name. A prompt will appear allowing you to enter a new name.</li>
+            <li><strong>Edit Players:</strong> In the player list, you can edit a player's name and assign them as Captain or Vice Captain by clicking the pencil icon (🖉) next to their name. A modal will appear allowing you to enter a new name and select their position.</li>
             <li><strong>Remove Players:</strong> To remove a player from the list, click the '×' icon next to their name.</li>
             <li><strong>Teams Automatically Split:</strong> As you add, edit, or remove players, the teams will be automatically and equally split based on the players' roles to ensure balanced teams.</li>
+            <li><strong>Swap and Rearrange Players:</strong> You can drag and drop players between teams or within the same team to swap or rearrange them.</li>
             <li><strong>Add Teams:</strong> If you want to create more than two teams, click the "Add Team" button. Players will be redistributed automatically among all teams.</li>
+            <li><strong>Shuffle Teams:</strong> If you want to redistribute players among the teams after they have been added, click the "Shuffle Teams" button. Players will be reshuffled and teams will be updated automatically.</li>
             <li><strong>View Teams:</strong> The teams will be displayed in the "Teams" section. Each team shows the list of players and their roles.</li>
             <li><strong>Download PDF:</strong> To save the team configurations, click the "Download PDF" button. A PDF file containing the team details will be downloaded.</li>
             <li><strong>Reset:</strong> To start over, click the "Reset" button. This will clear all players and reset the teams.</li>
@@ -64,11 +66,27 @@
         </ol>
     </div>
 </div>
-<script src="assets/script.js"></script>
+
+<!-- Edit Player Modal -->
+<div id="editPlayerModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" id="closeModal">&times;</span>
+        <h2>Edit Player</h2>
+        <input type="text" id="editPlayerName" placeholder="Enter player name">
+        <select id="editPlayerPosition">
+            <option value="Player">Player</option>
+            <option value="Captain">Captain</option>
+            <option value="Vice Captain">Vice Captain</option>
+        </select>
+        <button onclick="savePlayerChanges()">Save</button>
+    </div>
+</div>
 
 <!-- Footer Section -->
 <footer>
-    Developed by <a href="mailto:mrbaiwriting@gmail.com">Muhammed✌️</a>
+    Developed by <a href="mailto:mrbaiwriting@gmail.com">Muhammed✌️</a><br><br>
+    <a href="https://buymeacoffee.com/mrbaiwritings" target="_blank">
+        <img id="bmc-button" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: 217px !important;">
+    </a>
 </footer>
-</body>
-</html>
+<!-- Footer Section Ends -->
