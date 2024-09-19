@@ -1,4 +1,4 @@
-* {
+        * {
             box-sizing: border-box;
         }
         body {
@@ -301,3 +301,4 @@
         body.dark-mode #bmc-button {
             content: url('https://cdn.buymeacoffee.com/buttons/v2/default-black.png');
         }
+    
