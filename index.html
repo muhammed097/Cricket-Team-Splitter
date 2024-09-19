@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cricket Team Splitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Include jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Cricket Team Splitter</h1>
+
+
+    <div class="dark-mode-toggle" id="darkModeToggle">
+        <span class="icon moon-icon">&#9789;</span>
+        <div class="toggle-switch"></div>
+        <span class="icon sun-icon">&#9728;</span>
+    </div>
+
+    <div class="section">
+        <h2>Add Players</h2>
+        <input type="text" id="playerName" placeholder="Enter player name">
+        <select id="playerRole">
+            <option value="Batter">Batter</option>
+            <option value="Bowler">Bowler</option>
+            <option value="All-Rounder">All-Rounder</option>
+            <option value="Wicket Keeper">Wicket Keeper</option>
+        </select>
+        <br>
+        <button onclick="addPlayer()">Add Player</button>
+    </div>
+
+    <div class="section">
+        <h2>Player List</h2>
+        <ul id="playerList"></ul>
+        <button onclick="addTeam()">Add Team</button>
+        <button onclick="resetTeams()" style="background-color: #b22222;">Reset</button>
+    </div>
+
+    <div id="teamsSection" class="section team-section">
+
+    </div>
+
+    <div id="downloadSection" class="section" style="display: none; text-align: center;">
+        <button onclick="downloadPDF()">Download PDF</button>
+    </div>
+
+    <div class="instructions">
+        <h2>Instructions</h2>
+        <p>Welcome to the Cricket Team Splitter application! Follow these steps to create balanced cricket teams:</p>
+        <ol>
+            <li><strong>Add Players:</strong> Enter the player's name in the text field and select their role from the dropdown menu. Available roles are Batter, Bowler, All-Rounder, and Wicket Keeper. Click the "Add Player" button to add them to the player list.</li>
+            <li><strong>Edit Players:</strong> In the player list, you can edit a player's name by clicking the pencil icon (🖉) next to their name. A prompt will appear allowing you to enter a new name.</li>
+            <li><strong>Remove Players:</strong> To remove a player from the list, click the '×' icon next to their name.</li>
+            <li><strong>Teams Automatically Split:</strong> As you add, edit, or remove players, the teams will be automatically and equally split based on the players' roles to ensure balanced teams.</li>
+            <li><strong>Add Teams:</strong> If you want to create more than two teams, click the "Add Team" button. Players will be redistributed automatically among all teams.</li>
+            <li><strong>View Teams:</strong> The teams will be displayed in the "Teams" section. Each team shows the list of players and their roles.</li>
+            <li><strong>Download PDF:</strong> To save the team configurations, click the "Download PDF" button. A PDF file containing the team details will be downloaded.</li>
+            <li><strong>Reset:</strong> To start over, click the "Reset" button. This will clear all players and reset the teams.</li>
+            <li><strong>Dark Mode:</strong> Use the toggle switch at the top-right corner to switch between light and dark modes for better visibility.</li>
+        </ol>
+    </div>
+</div>
+<script src="assets/script.js"></script>
+
+<!-- Footer Section -->
+<footer>
+    Developed by <a href="mailto:mrbaiwriting@gmail.com">Muhammed✌️</a>
+</footer>
+</body>
+</html>
