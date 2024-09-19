@@ -1,4 +1,4 @@
-    let players = [];
+let players = [];
     let teams = [];
 
     function initializeTeams() {
@@ -18,10 +18,10 @@
             alert('Please enter a player name.');
             return;
         }
-        players.push({ name: name, role: role });
+        players.push({ name: name, role: role, position: 'Player' });
         updatePlayerList();
         document.getElementById('playerName').value = '';
-        splitTeams(); // Automatically split teams after adding a player
+        splitTeams(); 
     }
 
     function updatePlayerList() {
@@ -31,7 +31,8 @@
             let item = document.createElement('li');
 
             let playerInfo = document.createElement('span');
-            playerInfo.textContent = `${player.name} (${player.role})`;
+            let positionText = player.position !== 'Player' ? ` - ${player.position}` : '';
+            playerInfo.textContent = `${player.name} (${player.role})${positionText}`;
 
             // Create a container for the buttons
             let buttonContainer = document.createElement('span');
@@ -60,15 +61,40 @@
         });
     }
 
+    let editPlayerIndex = null;
+
     function editPlayer(index) {
+        editPlayerIndex = index;
         let player = players[index];
-        let newName = prompt("Enter new name for " + player.name, player.name);
-        if (newName !== null && newName.trim() !== "") {
-            player.name = newName.trim();
+        document.getElementById('editPlayerName').value = player.name;
+        document.getElementById('editPlayerPosition').value = player.position || 'Player';
+        document.getElementById('editPlayerModal').style.display = 'block';
+    }
+
+    function savePlayerChanges() {
+        let newName = document.getElementById('editPlayerName').value.trim();
+        let newPosition = document.getElementById('editPlayerPosition').value;
+        if (newName !== '') {
+            players[editPlayerIndex].name = newName;
+            players[editPlayerIndex].position = newPosition;
             updatePlayerList();
-            splitTeams(); // Automatically split teams after editing a player
+            splitTeams();
+            document.getElementById('editPlayerModal').style.display = 'none';
+        } else {
+            alert('Please enter a player name.');
         }
     }
+
+    document.getElementById('closeModal').addEventListener('click', function() {
+        document.getElementById('editPlayerModal').style.display = 'none';
+    });
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target === document.getElementById('editPlayerModal')) {
+            document.getElementById('editPlayerModal').style.display = 'none';
+        }
+    };
 
     function removePlayer(index) {
         players.splice(index, 1);
@@ -151,13 +177,36 @@
 
             let teamList = document.createElement('ul');
             teamList.className = 'team';
+            teamList.setAttribute('data-team-index', index); // Set data attribute
+
             team.players.forEach(player => {
                 let item = document.createElement('li');
-                item.textContent = `${player.name} (${player.role})`;
+                let positionText = player.position !== 'Player' ? ` - ${player.position}` : '';
+                item.textContent = `${player.name} (${player.role})${positionText}`;
                 teamList.appendChild(item);
             });
             teamContainer.appendChild(teamList);
             teamsSection.appendChild(teamContainer);
+
+            // Initialize Sortable on the team list
+            Sortable.create(teamList, {
+                group: 'shared', // Allow drag between lists
+                animation: 150,
+                onEnd: function (evt) {
+                    let originTeamIndex = parseInt(evt.from.getAttribute('data-team-index'));
+                    let destinationTeamIndex = parseInt(evt.to.getAttribute('data-team-index'));
+                    let originIndex = evt.oldIndex;
+                    let destinationIndex = evt.newIndex;
+
+                    // Get the moved player
+                    let movedPlayer = teams[originTeamIndex].players.splice(originIndex, 1)[0];
+                    // Insert the moved player into the new position
+                    teams[destinationTeamIndex].players.splice(destinationIndex, 0, movedPlayer);
+
+                    // Re-render the teams to update the UI
+                    renderTeams();
+                }
+            });
         });
     }
 
@@ -203,7 +252,8 @@
                     doc.addPage();
                     startY = 20;
                 }
-                doc.text(`${player.name} (${player.role})`, 20, startY);
+                let positionText = player.position !== 'Player' ? ` - ${player.position}` : '';
+                doc.text(`${player.name} (${player.role})${positionText}`, 20, startY);
                 startY += 10;
             });
             startY += 10; // Add extra space after each team
@@ -217,3 +267,7 @@
     document.getElementById('darkModeToggle').addEventListener('click', function() {
         document.body.classList.toggle('dark-mode');
     });
+
+    function shuffleTeams() {
+        splitTeams(); // Reshuffles and redistributes the players among teams
+    }
