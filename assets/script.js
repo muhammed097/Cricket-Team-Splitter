@@ -173,6 +173,21 @@
 
             let teamHeader = document.createElement('h2');
             teamHeader.textContent = team.name;
+
+            // Add remove button to team header
+            let removeTeamBtn = document.createElement('span');
+            removeTeamBtn.innerHTML = '&times;';
+            removeTeamBtn.className = 'remove-button';
+            removeTeamBtn.style.marginLeft = '10px';
+            removeTeamBtn.onclick = function() {
+                removeTeam(index);
+            };
+
+            // Only allow removing teams if there are more than two teams
+            if (teams.length > 2) {
+                teamHeader.appendChild(removeTeamBtn);
+            }
+
             teamContainer.appendChild(teamHeader);
 
             let teamList = document.createElement('ul');
@@ -208,6 +223,23 @@
                 }
             });
         });
+    }
+
+    function removeTeam(index) {
+        // Ensure that at least two teams remain
+        if (teams.length <= 2) {
+            alert('Cannot remove team. At least two teams are required.');
+            return;
+        }
+
+        // Remove the team from the teams array
+        teams.splice(index, 1);
+
+        // Re-distribute the players among the remaining teams
+        splitTeams();
+
+        // Re-render the teams
+        renderTeams();
     }
 
     function addTeam() {
