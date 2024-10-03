@@ -301,4 +301,15 @@
         body.dark-mode #bmc-button {
             content: url('https://cdn.buymeacoffee.com/buttons/v2/default-black.png');
         }
+
+        .remove-button {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.remove-button:hover {
+    color: #d63447;
+}
     
