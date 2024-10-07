@@ -181,6 +181,7 @@
             align-items: center;
             padding: 0 5px;
             transition: background-color 0.3s;
+               display:none;
         }
         .dark-mode-toggle .toggle-switch {
             width: 26px;
